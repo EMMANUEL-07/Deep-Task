@@ -1,6 +1,7 @@
 const express = require('express');
+
+const config = require('./config');
 const logicRoutes = require('./routes');
-const Controller =  require('./controllers');
 
 require('dotenv').config()
 
@@ -20,7 +21,8 @@ app.use(((err, req, res, next) => {
   res.error(500, 'Internal server error');
 }));
 
-const PORT = process.env.PORT;
+const PORT = config.PORT;
+console.log(config.NODE_ENV, config.WINDOW_TIME)
 
 app.listen(PORT, () => {
   console.log(`Server Logger started on port ${PORT}`);

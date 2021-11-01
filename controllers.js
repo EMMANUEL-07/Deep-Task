@@ -1,19 +1,22 @@
+const config = require('./config');
+
 const AverageValues = [];
 
 const MetricValues = [];
 
 let activeWindow = false;
 
+const Interval = +config.WINDOWTIME;
 
 const windowLogic = () => {
-  
+
   activeWindow = true;
 
   setTimeout(() => {
     AverageValues.push(MetricValues.reduce((a, b) => (a + b)) / MetricValues.length)
     activeWindow = false
     MetricValues.length = 0;
-  }, 10000);
+  }, Interval);
 };
 
 exports.postMetric = (req, res, next) => {
