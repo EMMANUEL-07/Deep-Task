@@ -20,14 +20,18 @@ const windowLogic = () => {
 };
 
 exports.postMetric = (req, res, next) => {
-  const metricVal = req.params.metric;
+  let metricVal = req.params.metric;
+
+  if(!+metricVal) {
+    metricVal = 0
+  }
 
   if (activeWindow) {
     MetricValues.push(+metricVal)
   }
   else {
     windowLogic();
-    MetricValues.push(+metricVal)
+    MetricValues.push(+metricVal);
   }
 
   /* return res.status(204).json({"message": 'Metric Added Successfully'}); */
@@ -64,4 +68,3 @@ exports.getData = (req, res, next) => {
 
   return res.json({ 'avg': AverageValues, 'window': activeWindow, "num": MetricValues.length })
 };
-

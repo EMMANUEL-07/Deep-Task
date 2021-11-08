@@ -22,8 +22,7 @@ app.use(((err, req, res, next) => {
 }));
 
 const PORT = config.PORT;
-console.log(config.NODE_ENV, config.WINDOW_TIME)
 
 app.listen(PORT, () => {
-  console.log(`Server Logger started on port ${PORT}`);
+  console.log(`Metric-logging Analytic Server started on port ${PORT}`);
 });
