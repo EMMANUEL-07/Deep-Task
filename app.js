@@ -1,9 +1,6 @@
 const express = require('express');
 
-const config = require('./config');
 const logicRoutes = require('./routes');
-
-require('dotenv').config()
 
 const app = express();
 
@@ -21,8 +18,4 @@ app.use(((err, req, res, next) => {
   res.error(500, 'Internal server error');
 }));
 
-const PORT = config.PORT;
-
-app.listen(PORT, () => {
-  console.log(`Metric-logging Analytic Server started on port ${PORT}`);
-});
+module.exports = app;

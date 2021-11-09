@@ -13,8 +13,8 @@ const windowLogic = () => {
   activeWindow = true;
 
   setTimeout(() => {
-    AverageValues.push(MetricValues.reduce((a, b) => (a + b)) / MetricValues.length)
-    activeWindow = false
+    AverageValues.push(MetricValues.reduce((a, b) => (a + b)) / MetricValues.length);
+    activeWindow = false;
     MetricValues.length = 0;
   }, Interval);
 };
@@ -22,12 +22,12 @@ const windowLogic = () => {
 exports.postMetric = (req, res, next) => {
   let metricVal = req.params.metric;
 
-  if(!+metricVal) {
-    metricVal = 0
+  if (!+metricVal) {
+    metricVal = 0;
   }
 
   if (activeWindow) {
-    MetricValues.push(+metricVal)
+    MetricValues.push(+metricVal);
   }
   else {
     windowLogic();
@@ -45,7 +45,11 @@ exports.getMetric = (req, res, next) => {
 
   let arrlength = AverageValues.length;
 
-  if ((arrlength % 2) == 0) {
+  if (arrlength == 0) {
+
+    return res.status(200).json({ "median": "No average values yet" });
+  }
+  else if ((arrlength % 2) == 0) {
     let c = arrlength / 2;
     let d = [AverageValues[c - 1], AverageValues[c]];
     return res.status(200).json({ "median": d.sort((x, y) => x - y)[0] });
@@ -66,5 +70,5 @@ exports.deleteMetric = (req, res, next) => {
 
 exports.getData = (req, res, next) => {
 
-  return res.json({ 'avg': AverageValues, 'window': activeWindow, "num": MetricValues.length })
+  return res.json({ 'avg': AverageValues, 'window': activeWindow, "num": MetricValues.length });
 };

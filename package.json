@@ -4,7 +4,7 @@
   "description": "Proposed solution to given task",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "start": "node app.js",
     "dev": "set NODE_ENV=development&& nodemon app.js",
     "prod": "set NODE_ENV=production&& node app.js"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/EMMANUEL-07/Deep-Task.git"
   },
-  "author": "EMMANUE OYEKAN",
+  "author": "EMMANUEL OYEKAN",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/EMMANUEL-07/Deep-Task/issues"
@@ -25,6 +25,8 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.14",
+    "supertest": "^6.1.6"
   }
 }
