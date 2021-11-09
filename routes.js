@@ -10,7 +10,6 @@ router.post('/:metric', Controller.postMetric);
 
 router.delete('/:metric', Controller.deleteMetric);
 
-router.get('/data', Controller.getData);
 
 
 module.exports = router;

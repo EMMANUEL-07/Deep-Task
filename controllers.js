@@ -13,7 +13,7 @@ const windowLogic = () => {
   activeWindow = true;
 
   setTimeout(() => {
-    AverageValues.push(MetricValues.reduce((a, b) => (a + b)) / MetricValues.length);
+    AverageValues.push(Math.floor(MetricValues.reduce((a, b) => (a + b)) / MetricValues.length));
     activeWindow = false;
     MetricValues.length = 0;
   }, Interval);
@@ -66,9 +66,4 @@ exports.deleteMetric = (req, res, next) => {
 
   /* return res.status(204).json({"message": 'Deleted Successfully', "Median": AverageValues }); */
   return res.status(204).end();
-};
-
-exports.getData = (req, res, next) => {
-
-  return res.json({ 'avg': AverageValues, 'window': activeWindow, "num": MetricValues.length });
 };
