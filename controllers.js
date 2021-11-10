@@ -1,8 +1,8 @@
 const config = require('./config');
 
-const AverageValues = [];
+const AverageValues = [];                           //storage for recorded averages
 
-const MetricValues = [];
+const MetricValues = [];                            //storage for metric values
 
 let activeWindow = false;
 
@@ -64,6 +64,6 @@ exports.getMetric = (req, res, next) => {
 exports.deleteMetric = (req, res, next) => {
   AverageValues.length = 0;
 
-  /* return res.status(204).json({"message": 'Deleted Successfully', "Median": AverageValues }); */
+  /* return res.status(204).json({"message": 'Deleted Successfully', "AverageVals": AverageValues }); */
   return res.status(204).end();
 };
