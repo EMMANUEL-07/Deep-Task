@@ -7,4 +7,6 @@ Kindly note the following:
 2. Functions are restricted to perform operations inline with their http methods, to aid simplicity. (i.e a get request only retrieves and not more than that.)
 3. Average values stored were rounded down to integers.
 
+4. Committed environment variables for ease of use
+
 Thank you.
